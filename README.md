@@ -22,7 +22,7 @@ Hi fellows this project has the intuit to share solutions for the most common ne
 - Reset, forgot and change password services integrated with AWS Simple Email Service.
 - Active Storage for files and images integrated with AWS S3 Bucket.
 - Facebook and Google social login.
-- Bitbucket pipeline configuration to run Continuous Integration and Continuous Delivery. 
+- Bitbucket pipeline configuration to run Continuous Integration and Continuous Delivery.
 
 ## Prerequisites
 - [Docker](https://docs.docker.com/install/)
@@ -33,13 +33,13 @@ Hi fellows this project has the intuit to share solutions for the most common ne
 - Create empty `.env` file on project root.
 - Run `$ docker-compose up --build`, docker will download the images and create the containers, it might take a while. Before finish, it will run start.sh file which will configure database (Create, migrate and seeds).
 - If you have Rails binary locally open another instance of terminal and run `$ EDITOR="vi --wait" rails credentials:edit`.
-- If you don't you can execute `$ docker exec -it quick_starter_api bash` and generate the master.key with `# EDITOR="vi --wait" rails credentials:edit` from inside the container. It will create the config/master.key which is required to work with JWT auth.
-- The server will be up on 3000 port, you can access now by `localhost:3000` 
+- If you don't you can execute `$ docker exec -it himama_clockin_api bash` and generate the master.key with `# EDITOR="vi --wait" rails credentials:edit` from inside the container. It will create the config/master.key which is required to work with JWT auth.
+- The server will be up on 3000 port, you can access now by `localhost:3000`
 
 ## Getting Started
 - Run application with `$ docker-compose up`
 (After the first *docker-compose up --build* it's not necessary to run with **--build** again)
-- Login with User from seed by sending a POST to `localhost:3000/api/v1/login` with JSON body: 
+- Login with User from seed by sending a POST to `localhost:3000/api/v1/login` with JSON body:
 ``` JSON
 {
   "auth": {
@@ -49,14 +49,14 @@ Hi fellows this project has the intuit to share solutions for the most common ne
 }
 ```
 it will return an object with JWT token. Take it and use on header `Authentication: Bearer TOKEN_JWT` in other requests, like `GET localhost:3000/api/v1/users`
-- For futher information about API documentation you can import to [Postman](https://www.getpostman.com/downloads/) the collections from documentation/api_postman_collections 
+- For futher information about API documentation you can import to [Postman](https://www.getpostman.com/downloads/) the collections from documentation/api_postman_collections
 - Your application is ready to go!
 
 ## Running the tests
-Inside the project folder execute `$ docker exec -it quick_starter_api bash` and then run `# rspec` after running all tests it will generate a coverage/ folder with the report in HTML format.
+Inside the project folder execute `$ docker exec -it himama_clockin_api bash` and then run `# rspec` after running all tests it will generate a coverage/ folder with the report in HTML format.
 
 ## Running static code analyzer
-Inside the project folder execute `$ docker exec -it quick_starter_api bash` and then run `# rubocop`
+Inside the project folder execute `$ docker exec -it himama_clockin_api bash` and then run `# rubocop`
 
 ## Contributing
 Please check this repo's CONTRIBUTING.md file for guidelines on how to contribute. Your pull request is welcome!
