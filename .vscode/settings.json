@@ -8,6 +8,6 @@
   "editor.detectIndentation": false,
   "editor.tabSize": 2,
   "docker-linter.rubocop.enable": true,
-  "docker-linter.rubocop.container": "quick_starter_api",
+  "docker-linter.rubocop.container": "himama_clockin_api",
   "docker-linter.rubocop.machine": ""
 }

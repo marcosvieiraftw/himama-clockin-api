@@ -1,29 +1,29 @@
 version: '3'
 services:
-  quick_starter_api:
+  himama_clockin_api:
     tty: true
     stdin_open: true
     build: .
-    container_name: quick_starter_api
+    container_name: himama_clockin_api
     command: bash start.sh
     env_file:
     - .env
     environment:
       RAILS_ENV: "${RAILS_ENV:-development}"
-      APP_DB_HOST: db_quick_starter_api
+      APP_DB_HOST: db_himama_clockin_api
     volumes:
       - .:/app
     ports:
       - "3000:3000"
     depends_on:
-      - db_quick_starter_api
+      - db_himama_clockin_api
     links:
-      - db_quick_starter_api
+      - db_himama_clockin_api
     networks:
-      - quick_starter_api_net
+      - himama_clockin_api_net
 
-  db_quick_starter_api:
-    container_name: db_quick_starter_api
+  db_himama_clockin_api:
+    container_name: db_himama_clockin_api
     image: postgres:11.5
     ports:
       - "5432:5432"
@@ -33,7 +33,7 @@ services:
       POSTGRES_PASSWORD: 123456
       POSTGRES_USER: root
     networks:
-      - quick_starter_api_net
+      - himama_clockin_api_net
 
 networks:
-  quick_starter_api_net:
+  himama_clockin_api_net:
