@@ -25,6 +25,8 @@ gem 'rack-cors'
 gem 'bootsnap', '>= 1.4.2', require: false
 # The ultimate pagination ruby gem
 gem 'pagy', '~> 3.6.0'
+# pg_search builds ActiveRecord named scopes that take advantage of PostgreSQL’s full text search http://www.casebook.net
+gem 'pg_search', '~> 2.3.2'
 
 group :development, :test do
   gem 'dotenv-rails'
