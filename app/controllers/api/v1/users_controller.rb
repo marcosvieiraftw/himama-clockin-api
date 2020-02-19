@@ -12,11 +12,13 @@ class Api::V1::UsersController < Api::V1::ApiV1Controller
 
   # GET /api/v1/users/1
   def show
+    authorize User
     render json: Api::V1::UserSerializer.new(@api_v1_user).serialized_json
   end
 
   # POST /api/v1/users
   def create
+    authorize User
     @api_v1_user = User.new(api_v1_user_params)
 
     if @api_v1_user.save
@@ -28,6 +30,7 @@ class Api::V1::UsersController < Api::V1::ApiV1Controller
 
   # PATCH/PUT /api/v1/users/1
   def update
+    authorize User
     if @api_v1_user.update(api_v1_user_params)
       render json: Api::V1::UserSerializer.new(@api_v1_user).serialized_json
     else
@@ -37,6 +40,7 @@ class Api::V1::UsersController < Api::V1::ApiV1Controller
 
   # DELETE /api/v1/users/1
   def destroy
+    authorize User
     @api_v1_user.soft_delete!
   end
 
@@ -49,6 +53,6 @@ class Api::V1::UsersController < Api::V1::ApiV1Controller
 
   # Only allow a trusted parameter "white list" through.
   def api_v1_user_params
-    params.require(:api_v1_user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
