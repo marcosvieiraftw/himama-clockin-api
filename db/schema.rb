@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_10_153744) do
+ActiveRecord::Schema.define(version: 2020_02_19_133032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clockin_records", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "register_type"
+    t.datetime "register_date"
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_clockin_records_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", limit: 60
@@ -25,4 +35,5 @@ ActiveRecord::Schema.define(version: 2019_11_10_153744) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "clockin_records", "users"
 end

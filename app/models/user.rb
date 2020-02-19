@@ -4,6 +4,9 @@ class User < ApplicationRecord
   has_soft_deletion default_scope: true
   has_secure_password
 
+  # Relations
+  has_many :clockin_records
+
   # Validations
   validates :name, length: { maximum: 60 }, presence: true, absence: false
   validates(
