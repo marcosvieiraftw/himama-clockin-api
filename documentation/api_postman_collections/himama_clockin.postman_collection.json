@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "1e8d6c9e-93a7-435e-b4ae-eae20d3a890f",
-		"name": "quick starter",
-		"description": "Quick starter API documentation",
+		"_postman_id": "df1f24b0-ae62-466c-823b-b93ebe079d4e",
+		"name": "clock in",
+		"description": "HiMama ClockIn API documentation",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -28,27 +28,23 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "api_v1_user[name]",
-									"value": "Pretty name",
-									"sessionValue": "Pretty name",
+									"key": "user[name]",
+									"value": "{{$randomNamePrefix}} name",
 									"type": "text"
 								},
 								{
-									"key": "api_v1_user[email]",
+									"key": "user[email]",
 									"value": "email@email.com",
-									"sessionValue": "email@email.com",
 									"type": "text"
 								},
 								{
-									"key": "api_v1_user[password]",
+									"key": "user[password]",
 									"value": "123",
-									"sessionValue": "123",
 									"type": "text"
 								},
 								{
-									"key": "api_v1_user[password_confirmation]",
+									"key": "user[password_confirmation]",
 									"value": "123",
-									"sessionValue": "123",
 									"type": "text"
 								}
 							]
@@ -89,15 +85,13 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "api_v1_user[name]",
+									"key": "user[name]",
 									"value": "New name",
-									"sessionValue": "New name",
 									"type": "text"
 								},
 								{
-									"key": "api_v1_user[email]",
+									"key": "user[email]",
 									"value": "new_email@mail.com",
-									"sessionValue": "new_email@mail.com",
 									"type": "text"
 								}
 							]
@@ -135,7 +129,6 @@
 						},
 						"method": "GET",
 						"header": [],
-						"body": {},
 						"url": {
 							"raw": "http://localhost:3000/api/v1/users",
 							"protocol": "http",
@@ -168,7 +161,6 @@
 						},
 						"method": "GET",
 						"header": [],
-						"body": {},
 						"url": {
 							"raw": "http://localhost:3000/api/v1/users/1",
 							"protocol": "http",
@@ -202,7 +194,10 @@
 						},
 						"method": "DELETE",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
 						"url": {
 							"raw": "http://localhost:3000/api/v1/users/1",
 							"protocol": "http",
@@ -232,7 +227,8 @@
 						"type": "string"
 					}
 				]
-			}
+			},
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Login",
@@ -258,13 +254,11 @@
 								{
 									"key": "auth[email]",
 									"value": "marcos@marcos.com",
-									"sessionValue": "marcos@marcos.com",
 									"type": "text"
 								},
 								{
 									"key": "auth[password]",
 									"value": "123",
-									"sessionValue": "123",
 									"type": "text"
 								}
 							]
@@ -296,7 +290,243 @@
 						"type": "string"
 					}
 				]
+			},
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ClockIn Register",
+			"item": [
+				{
+					"name": "Show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/clockin_records/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"clockin_records",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/clockin_records/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"clockin_records",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/clockin_records?type=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"clockin_records"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "1",
+									"description": "optional query to search by type, use: { in: 1, out: 0 }"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "clockin_record[register_type]",
+									"value": "in",
+									"type": "text"
+								},
+								{
+									"key": "clockin_record[register_date]",
+									"value": "2020-02-20T14:08:27.998Z",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/clockin_records",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"clockin_records"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "clockin_record[register_type]",
+									"value": "out",
+									"type": "text"
+								},
+								{
+									"key": "clockin_record[register_date]",
+									"value": "2020-02-18T14:08:27.998Z",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/clockin_records/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"clockin_records",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwt}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9654a05b-2c90-4e19-adf1-31530dc3ab72",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "0e4c1e72-6a31-44ef-b08a-0899a9198faa",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
 			}
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
