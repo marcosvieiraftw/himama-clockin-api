@@ -17,5 +17,9 @@ RSpec.describe(User, type: :model) do
     context 'uniquiness' do
       it { is_expected.to(validate_uniqueness_of(:email)) }
     end
+
+    context 'association' do
+      it { is_expected.to(have_many(:clockin_records)) }
+    end
   end
 end

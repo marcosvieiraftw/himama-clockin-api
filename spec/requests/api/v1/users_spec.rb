@@ -44,7 +44,7 @@ RSpec.describe 'Api::V1::Users', type: :request do
     context 'when user has permission to access resource' do
       before do
         body = {
-          api_v1_user: {
+          user: {
             name: 'Marcos',
             email: 'marcos@m.com',
             password: '123',
@@ -69,7 +69,7 @@ RSpec.describe 'Api::V1::Users', type: :request do
     context 'when user has permission to access resource' do
       before do
         body = {
-          api_v1_user: {
+          user: {
             name: 'New fresh name',
             email: 'new@m.com',
           },
