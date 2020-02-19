@@ -1,0 +1,14 @@
+en:
+  activerecord:
+    models:
+      clockin_record:
+        one: Clockin Record
+        others: Clockin Records
+    attributes:
+      clockin_record:
+        register_type: Type of event
+        register_date: Datetime of event
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      last_type_equals: you can't register the same type consecutively.
