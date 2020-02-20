@@ -3,7 +3,7 @@
 Backend application responsible to manage entities, endpoints and constraints.
 
 ## Available in
-- [Link](https://himama-clockin-api.herokuapp.com/api/v1)
+- BaseURL: https://himama-clockin-api.herokuapp.com/api/v1
 
 ## Summary
 - API Only.
