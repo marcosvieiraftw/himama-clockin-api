@@ -24,7 +24,7 @@ class ClockinRecord < ApplicationRecord
   def check_last_record_type
     last_user_record = ClockinRecord.where(user_id: user_id).last
     if last_user_record&.register_type == register_type
-      errors.add(:register_type, :last_type_equals)
+      errors.add(:base, :last_type_equals)
     end
   end
 end

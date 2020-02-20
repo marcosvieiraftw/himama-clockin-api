@@ -11,4 +11,4 @@ en:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      last_type_equals: you can't register the same type consecutively.
+      last_type_equals: You can't register same type events consecutively.

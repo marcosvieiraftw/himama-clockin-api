@@ -7,14 +7,22 @@ class Api::V1::ClockinRecordsController < Api::V1::ApiV1Controller
     query = params[:type]
 
     if query.present?
-      @api_v1_clockin_records = ClockinRecord.search_by_type(query).where(user_id: current_user.id)
+      @api_v1_clockin_records = ClockinRecord
+        .search_by_type(query)
+        .where(user_id: current_user.id)
     else
       @api_v1_clockin_records = policy_scope(ClockinRecord.all)
     end
 
-    @pagy, @api_v1_clockin_records = pagy(@api_v1_clockin_records)
+    @pagy, @api_v1_clockin_records = pagy(@api_v1_clockin_records, items: params[:items])
     options = { meta: pagy_metadata(@pagy) }
-    render json: Api::V1::ClockinRecordSerializer.new(@api_v1_clockin_records, options).serialized_json
+    render json: Api::V1::ClockinRecordSerializer.new(
+      @api_v1_clockin_records.order(
+        register_date: :DESC,
+        created_at: :DESC
+      ),
+      options
+    ).serialized_json
   end
 
   # GET /api/v1/clockin_records/1
@@ -32,7 +40,7 @@ class Api::V1::ClockinRecordsController < Api::V1::ApiV1Controller
     if @api_v1_clockin_record.save
       render json: Api::V1::ClockinRecordSerializer.new(@api_v1_clockin_record).serialized_json, status: :created
     else
-      render json: @api_v1_clockin_record.errors, status: :unprocessable_entity
+      render json: { errors: @api_v1_clockin_record.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -42,7 +50,7 @@ class Api::V1::ClockinRecordsController < Api::V1::ApiV1Controller
     if @api_v1_clockin_record.update(api_v1_clockin_record_params)
       render json: Api::V1::ClockinRecordSerializer.new(@api_v1_clockin_record).serialized_json
     else
-      render json: @api_v1_clockin_record.errors, status: :unprocessable_entity
+      render json: { errors: @api_v1_clockin_record.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

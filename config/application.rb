@@ -33,6 +33,9 @@ module HimamaClockinApi
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    # Tz
+    config.time_zone = 'Eastern Time (US & Canada)'
+
     # Controllers
     config.action_controller.action_on_unpermitted_parameters = :raise
 
