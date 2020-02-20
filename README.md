@@ -1,6 +1,6 @@
 # HiMama ClockIn Api | Rails 6.0.1 & Ruby 2.6.5
 
-Backend application responsible to manage entities, endpoints and constraints.
+Backend application responsible for managing entities, endpoints and constraints.
 
 ## Available in
 - BaseURL: https://himama-clockin-api.herokuapp.com/api/v1
