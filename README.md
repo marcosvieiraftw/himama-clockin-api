@@ -1,6 +1,9 @@
-# Quick Starter | Rails 6.0.1 & Ruby 2.6.5
+# HiMama ClockIn Api | Rails 6.0.1 & Ruby 2.6.5
 
-Hi fellows this project has the intuit to share solutions for the most common needs in fresh projects. It will boost your start and create a fully configured project along with great tools to keep your quality up. The project has one module named User which is used to authenticate.
+Backend application responsible to manage entities, endpoints and constraints.
+
+## Available in
+- [Link](https://himama-clockin-api.herokuapp.com/api/v1)
 
 ## Summary
 - API Only.
@@ -11,18 +14,20 @@ Hi fellows this project has the intuit to share solutions for the most common ne
 - Along with serialization, there's the metadata object to work with server-side pagination, boosting your application performance | [Pagy](https://github.com/ddnexus/pagy)
 - Soft deletion configured for sensitive entities | [Soft Deletion](https://github.com/grosser/soft_deletion)
 - User model configured to save password with OpenBSD bcrypt() hashing algorithm | [bcrypt](https://github.com/codahale/bcrypt-ruby)
-- CORS configured to accept requests from any domain. **BE CAREFUL**: change it before production release.
 - All response strings centralized on i18n files. By default, application is using EN-US but you can change it by creating yml files for you idiom. For more click [here](https://guides.rubyonrails.org/i18n.html).
 - API documented with Postman on documentation/ folder.
 - VSCode configuration to run Rubocop lint on code while you develop to save your time. You'll need [docker-linter](https://marketplace.visualstudio.com/items?itemName=henriiik.docker-linter) and [ruby-rubocop](https://marketplace.visualstudio.com/items?itemName=misogi.ruby-rubocop) extensions to properly work.
 - Ruby style guide with Rubocop using [Shopify](https://shopify.github.io/ruby-style-guide/rubocop.yml) rules.
-- Automated test suite: Rspec, Factory bot, shoulda-matchers, faker, simplecov and database_cleaner. There're examples of Request *[Why to use Request specs instead of obsolete Controllers spec](http://rspec.info/blog/2016/07/rspec-3-5-has-been-released/)* and Models tests along with Factories for User, Rspec shared examples, helpers to sanitize JSON responses and to create authentication valid headers.
+- Automated test suite: Rspec, Factory bot, shoulda-matchers, faker, simplecov and database_cleaner. There're Integration testes and Model tests along with Factories for User, Rspec shared examples, helpers to sanitize JSON responses and to create authentication valid headers.
 
-## Soon (Not available yet)
-- Reset, forgot and change password services integrated with AWS Simple Email Service.
-- Active Storage for files and images integrated with AWS S3 Bucket.
-- Facebook and Google social login.
-- Bitbucket pipeline configuration to run Continuous Integration and Continuous Delivery.
+## Key features
+- The application is fully tested with 95% coverage.
+- Skinny controllers and skinny models by distributing and reusing code through services and concerns. Less code = Fewer bugs.
+- Centralized i18n files with all application text strings.
+- Strong architecture created based on best rails approaches for APIs. Gems were chosen carefully based on community approval and stability.
+- Stateless, Backend pagination, JSON responses serialized with Netflix Gem (take a look at its benchmarks), String search using PgSearch to avoid SQL Injection or other vulnerabilities. Everything made pursuing performance/scalability.
+- Build based on my rails-quick-starter-api [project](https://github.com/marcosvieiraftw/rails-api-quick-starter)
+And much more!
 
 ## Prerequisites
 - [Docker](https://docs.docker.com/install/)
@@ -48,6 +53,15 @@ Hi fellows this project has the intuit to share solutions for the most common ne
   }
 }
 ```
+<i>or</i></br>
+``` JSON
+{
+  "auth": {
+    "email": "himama@himama.com",
+    "password": "123"
+  }
+}
+```
 it will return an object with JWT token. Take it and use on header `Authentication: Bearer TOKEN_JWT` in other requests, like `GET localhost:3000/api/v1/users`
 - For futher information about API documentation you can import to [Postman](https://www.getpostman.com/downloads/) the collections from documentation/api_postman_collections
 - Your application is ready to go!
@@ -57,9 +71,3 @@ Inside the project folder execute `$ docker exec -it himama_clockin_api bash` an
 
 ## Running static code analyzer
 Inside the project folder execute `$ docker exec -it himama_clockin_api bash` and then run `# rubocop`
-
-## Contributing
-Please check this repo's CONTRIBUTING.md file for guidelines on how to contribute. Your pull request is welcome!
-
-## License
-This project is licensed under the MIT License - see the LICENSE.md file for details
