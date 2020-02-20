@@ -27,7 +27,7 @@ Backend application responsible to manage entities, endpoints and constraints.
 - Strong architecture created based on best rails approaches for APIs. Gems were chosen carefully based on community approval and stability.
 - Stateless, Backend pagination, JSON responses serialized with Netflix Gem (take a look at its benchmarks), String search using PgSearch to avoid SQL Injection or other vulnerabilities. Everything made pursuing performance/scalability.
 - Build based on my rails-quick-starter-api [project](https://github.com/marcosvieiraftw/rails-api-quick-starter)
-And much more!
+- And much more!
 
 ## Prerequisites
 - [Docker](https://docs.docker.com/install/)
